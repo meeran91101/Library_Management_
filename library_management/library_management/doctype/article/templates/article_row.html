@@ -1,0 +1,13 @@
+<div class="row py-3 align-items-center">
+  <div class="col-sm-1">
+    <img alt="{{ doc.name | default('No Title Provided') }}" 
+         src="{{ doc.image | default('No Image Available') }}" 
+         class="img-fluid rounded"/>
+  </div>
+  <div class="col">
+    <a href="{{ doc.route | default('#') }}" class="fw-bold text-primary fs-5">
+      {{ doc.name | default('Title Not Found') }}
+    </a>
+    <p class="text-muted mb-0">By **{{ doc.author | default('Author Unknown') }}**</p>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{% extends "templates/web.html" %}
+
+{% block page_content %}
+
+<div class="py-20 row">
+  <div class="col-sm-2">
+    <img alt="{{ title | default('No Title Provided') }}" src="{{ image | default('No Image Available') }}" class="img-fluid"/>
+  </div>
+  <div class="col">
+    <h1>{{ title | default('Title Not Found') }}</h1>
+    <p class="lead">By {{ author | default('Author Unknown') }}</p>
+    <div>
+      {% if status == 'Available' %}
+        <span class="badge bg-success">Available</span>
+      {% elif status == 'Issued' %}
+        <span class="badge bg-primary">Issued</span>
+      {% else %}
+        <span class="badge bg-secondary">Status Unknown</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <div><strong>Publisher:</strong> {{ publisher | default('Publisher Missing') }}</div>
+  <div><strong>ISBN:</strong> {{ isbn | default('ISBN Not Available') }}</div>
+  <p>{{ description | default('No Description Provided') }}</p>
+</div>
+
+{% endblock %}
