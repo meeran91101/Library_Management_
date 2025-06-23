@@ -12,7 +12,6 @@ class LibraryMembership(Document):
             {
                 "library_member": self.library_member,
                 "docstatus": DocStatus.submitted(),
-                # check if the membership's end date is later than this membership's start date
                 "to_date": (">", self.from_date),
             },
         )
