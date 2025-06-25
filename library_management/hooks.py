@@ -5,6 +5,7 @@ app_description = "App For Manage Library"
 app_email = "meeran@tridotstech.com"
 app_license = "mit"
 
+
 # Apps
 # ------------------
 

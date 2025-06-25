@@ -1,0 +1,23 @@
+{
+ "__unsaved": 1,
+ "creation": "2021-01-20 13:20:46.147656",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "fieldname": "article_name",
+   "fieldtype": "Data",
+   "label": "Article Name",
+   "reqd": 0
+  }
+ ],
+ "idx": 1,
+ "modified": "2025-06-25 15:22:08.012035",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Primary Navbar",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Navbar"
+}

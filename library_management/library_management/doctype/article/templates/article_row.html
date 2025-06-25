@@ -1,13 +1,182 @@
-<div class="row py-3 align-items-center">
-  <div class="col-sm-1">
-    <img alt="{{ doc.name | default('No Title Provided') }}" 
-         src="{{ doc.image | default('No Image Available') }}" 
-         class="img-fluid rounded"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library Articles</title>
+
+  <style>
+    /* Navbar */
+    *{
+      margin:0;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+    .custom-navbar {
+      background-color: #002147; /* Navy Blue */
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      animation: fadeInDown 1s ease-out;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      padding-top: 80px; /* Prevent content from going under the fixed navbar */
+    }
+
+    .custom-navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #ffcc00;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ffcc00;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    /* Article Row */
+    .article-row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px 30px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .article-row img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .article-content a {
+      font-weight: bold;
+      font-size: 18px;
+      color: #0047ab;
+      text-decoration: none;
+    }
+
+    .article-content a:hover {
+      text-decoration: underline;
+    }
+
+    .article-content p {
+      margin: 5px 0 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .book-card {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  padding: 15px 20px;
+  margin: 20px;
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+}
+
+.book-card img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 20px;
+}
+
+.book-info h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #002147;
+}
+
+.book-info p {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="custom-navbar">
+    <div class="container">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/004/297/596/small/education-logo-open-book-dictionary-textbook-or-notebook-with-sunrice-icon-modern-emblem-idea-concept-design-for-business-libraries-schools-universities-educational-courses-vector.jpg"
+           class="logo"
+           alt="Library Logo" />
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/blog/artice-blog-post">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Article Row Template (in Frappe, loop this part using Jinja) -->
+  <div class="article-row book-card">
+    <img src="{{ doc.image or '/assets/frappe/images/default-image.png' }}" alt="{{ doc.name or 'No Title' }}" />
+    <div class="article-content">
+      <a href="{{ doc.route or '#' }}">{{ doc.name or 'Untitled Article' }}</a>
+      <p>By {{ doc.author or 'Unknown Author' }}</p>
+    </div>
   </div>
-  <div class="col">
-    <a href="{{ doc.route | default('#') }}" class="fw-bold text-primary fs-5">
-      {{ doc.name | default('Title Not Found') }}
-    </a>
-    <p class="text-muted mb-0">By **{{ doc.author | default('Author Unknown') }}**</p>
-  </div>
-</div>
+
+</body>
+</html>
