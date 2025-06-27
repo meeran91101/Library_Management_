@@ -16,7 +16,7 @@ frappe.query_reports["Script Report Library"] = {
                 'label': __('Library Member'),
                 'fieldtype': 'Link',
                 'options': 'Library Member',
-            },  
+            },
  
             {
                 'fieldname': 'type',
